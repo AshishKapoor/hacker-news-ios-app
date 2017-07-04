@@ -3,7 +3,7 @@
 //  Hacker News
 //
 //  Created by Ashish Kapoor on 04/07/17.
-//  Copyright © 2017 Ashish Kapoor. All rights reserved.
+//  Copyright © 2017 swiftobjc@gmail.com All rights reserved.
 //
 
 import UIKit
@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.rootViewController = HNMainTBC()
         return true
     }
 

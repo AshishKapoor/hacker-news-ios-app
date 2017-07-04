@@ -3,7 +3,7 @@
 //  Hacker News
 //
 //  Created by Ashish Kapoor on 04/07/17.
-//  Copyright © 2017 Ashish Kapoor. All rights reserved.
+//  Copyright © 2017 swiftobjc@gmail.com All rights reserved.
 //
 
 import UIKit

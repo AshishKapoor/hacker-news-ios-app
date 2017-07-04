@@ -3,7 +3,7 @@
 //  Hacker News
 //
 //  Created by Ashish Kapoor on 04/07/17.
-//  Copyright © 2017 Ashish Kapoor. All rights reserved.
+//  Copyright © 2017 swiftobjc@gmail.com All rights reserved.
 //
 
 import UIKit
@@ -20,6 +20,7 @@ class HNBestTVC: UITableViewController {
     
     func setupNavigationBar() {
         self.navigationController?.navigationBar.topItem?.title = kBestStory
+        self.tabBarItem.title = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +34,18 @@ class HNBestTVC: UITableViewController {
         
         let nib = UINib(nibName: String(describing: HNStoriesTVC.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: HNStoriesTVC.self))
+    }
+    
+    func loadData() {
+        let task = URLSession.shared.dataTask(with: NSURL(string: "http://httpbin.org/get")! as URL, completionHandler: { (data, response, error) -> Void in
+            do{
+                let str = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
+                print(str)
+            } catch {
+                fatalError("json error: \(error)")
+            }
+        })
+        task.resume()
     }
 }
 

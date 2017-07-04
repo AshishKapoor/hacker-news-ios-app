@@ -3,7 +3,7 @@
 //  Hacker News
 //
 //  Created by Ashish Kapoor on 04/07/17.
-//  Copyright © 2017 Ashish Kapoor. All rights reserved.
+//  Copyright © 2017 swiftobjc@gmail.com All rights reserved.
 //
 
 import UIKit
@@ -16,12 +16,18 @@ class HNTopTVC: UITableViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = kTopStory
         
+        setupTableView()
+    }
+    
+    func setupTableView() {
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
         
         let nib = UINib(nibName: String(describing: HNStoriesTVC.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: HNStoriesTVC.self))
     }
+    
+    
     
     //MARK: - UITableViewDataSource
     
