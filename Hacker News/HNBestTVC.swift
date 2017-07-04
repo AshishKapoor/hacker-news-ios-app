@@ -12,19 +12,9 @@ import Skeleton
 class HNBestTVC: UITableViewController {
     fileprivate static let kRowHeight: CGFloat = 70
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
-    }
-    
-    func setupNavigationBar() {
         self.navigationController?.navigationBar.topItem?.title = kBestStory
-        self.tabBarItem.title = ""
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
         setupSkeletonTable()
     }
     
@@ -34,18 +24,6 @@ class HNBestTVC: UITableViewController {
         
         let nib = UINib(nibName: String(describing: HNStoriesTVC.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: HNStoriesTVC.self))
-    }
-    
-    func loadData() {
-        let task = URLSession.shared.dataTask(with: NSURL(string: "http://httpbin.org/get")! as URL, completionHandler: { (data, response, error) -> Void in
-            do{
-                let str = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
-                print(str)
-            } catch {
-                fatalError("json error: \(error)")
-            }
-        })
-        task.resume()
     }
 }
 

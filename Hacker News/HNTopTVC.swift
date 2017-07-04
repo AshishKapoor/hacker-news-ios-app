@@ -3,7 +3,7 @@
 //  Hacker News
 //
 //  Created by Ashish Kapoor on 04/07/17.
-//  Copyright © 2017 swiftobjc@gmail.com All rights reserved.
+//  Copyright © 2017 Ashish Kapoor. All rights reserved.
 //
 
 import UIKit
@@ -14,8 +14,7 @@ class HNTopTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = kTopStory
-        
+        self.navigationController?.navigationBar.topItem?.title = kTopStory        
         setupTableView()
     }
     

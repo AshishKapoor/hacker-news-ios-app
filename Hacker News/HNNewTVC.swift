@@ -14,7 +14,10 @@ class HNNewTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = kNewStory
-        
+        setupSkeletonTable()
+    }
+    
+    func setupSkeletonTable () {
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
         

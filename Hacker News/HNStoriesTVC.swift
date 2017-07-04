@@ -16,7 +16,7 @@ class HNStoriesTVC: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        imagePlaceholderView.layer.cornerRadius = imagePlaceholderView.bounds.width/2
+        imagePlaceholderView.layer.cornerRadius = imagePlaceholderView.bounds.width/2
     }
 }
 
