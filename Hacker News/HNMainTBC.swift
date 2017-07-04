@@ -13,7 +13,7 @@ class HNMainTBC: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTabBar()
+        // setupTabBar()
         setupAppTheme(color: initialColor)
         viewControllers                         = setupStoriesTVC()
     }

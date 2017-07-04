@@ -16,6 +16,8 @@ class HNTopTVC: UITableViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = kTopStory        
         setupTableView()
+        
+//        loadData(url: kTopStoriesUrl)
     }
     
     func setupTableView() {

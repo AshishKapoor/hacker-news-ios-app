@@ -8,14 +8,23 @@
 
 import Foundation
 
-func loadData() {
-    let task = URLSession.shared.dataTask(with: NSURL(string: "http://httpbin.org/get")! as URL, completionHandler: { (data, response, error) -> Void in
-        do{
-            let str = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
-            print(str)
-        } catch {
-            fatalError("json error: \(error)")
-        }
-    })
-    task.resume()
+class HNNetwork {
+    public enum HTTPMethod: String {
+        case GET    = "GET"
+        case POST   = "POST"
+        case PUT    = "PUT"
+        case DELETE = "DELETE"
+    }
+    
+    func loadData(url: String) {
+        guard let hnUrl = URL(string: url) else {return}
+        let task = URLSession.shared.dataTask(with: hnUrl, completionHandler: { (data, response, error) -> Void in
+            do{
+                let option = JSONSerialization.ReadingOptions.allowFragments
+                guard let str = try JSONSerialization.jsonObject(with: data!, options: option) as? JSONDictionary else {return}
+                //            print(str)
+            } catch {fatalError("json error: \(error)")}
+        })
+        task.resume()
+    }
 }
