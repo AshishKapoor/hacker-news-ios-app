@@ -1,0 +1,15 @@
+PODS:
+  - Skeleton (0.1.0)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Skeleton
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Skeleton: b76249b7d6a73a9913e164c8030647a3e005c700
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: fc2c0d3a474b9ed9aa1eb6dfdd49252c5cabb90f
+
+COCOAPODS: 1.2.1
