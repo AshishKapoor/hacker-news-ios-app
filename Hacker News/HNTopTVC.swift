@@ -12,7 +12,7 @@ import HNClient
 
 class HNTopTVC: UITableViewController {
     private var topStories = [HNItem]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = kTopStory        
@@ -29,16 +29,22 @@ class HNTopTVC: UITableViewController {
         }
         
         
-        HNManager.shared.fetchNewStoriesIds { ids in
-            for i in 450..<(ids.0.count) {
-                HNManager.shared.fetchItem(id: i) { item, error in
-                    guard let items = item else {return}
-                    self.topStories.append(items)
+        HNManager.shared.fetchTopStoriesIds { [weak self] ids, error in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            self?.loadMore(urlValues: ids)
+        }
+    }
+    
+    func loadMore(urlValues: [Int]) {
+        for i in 0..<urlValues.count-180 {
+            HNManager.shared.fetchItem(id: urlValues[i]) { response, error in
+                guard let topStoryValues = response else  {return}
+                    self.topStories.append(topStoryValues)
                     self.tableView.reloadData()
-                }
             }
         }
     }
+    
     
     func setupTableView() {
         tableView.isScrollEnabled = false
@@ -85,22 +91,15 @@ class HNTopTVC: UITableViewController {
             
             cell.textLabel?.font = UIFont.systemFont(ofSize: 10)
             cell.textLabel?.numberOfLines = 10
-            
-//            cell.imagePlaceholderView.isHidden      = true
-//            cell.titlePlaceholderView.isHidden      = true
-//            cell.subtitlePlaceholderView.isHidden   = true
-            
+            cell.imagePlaceholderView.isHidden      = true
+            cell.titlePlaceholderView.isHidden      = true
+            cell.subtitlePlaceholderView.isHidden   = true
             
             tableView.isScrollEnabled = true
             tableView.separatorStyle = .singleLine
-
-            if self.topStories[indexPath.row].title == nil {
-                
-            } else {
-
+            
+            if self.topStories[indexPath.row].title != nil {
                 cell.textLabel?.text = self.topStories[indexPath.row].title
-                cell.detailTextLabel?.text = String(describing: self.topStories[indexPath.row].time)
-                
             }
             
             return cell

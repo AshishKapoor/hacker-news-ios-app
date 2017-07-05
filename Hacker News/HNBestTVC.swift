@@ -10,33 +10,39 @@ import UIKit
 import Skeleton
 import HNClient
 
-class HNBestTVC: UITableViewController {
-    private var bestStories = [HNItem]()
+class HNBestTVC:  UITableViewController {
+    private var topStories = [HNItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = kBestStory
         setupTableView()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        if bestStories.count > 0 {
-            bestStories.removeAll()
+        if topStories.count > 0 {
+            topStories.removeAll()
+            tableView.reloadData()
         }
         
-        HNManager.shared.fetchBestStoriesIds { ids in
-            for i in 0..<(ids.0.count)-150 {
-                HNManager.shared.fetchItem(id: i) { item, error in
-                    guard let items = item else {return}
-                    self.bestStories.append(items)
-                    self.tableView.reloadData()
-                }
+        
+        HNManager.shared.fetchBestStoriesIds { [weak self] ids, error in
+            self?.loadMore(urlValues: ids)
+        }
+    }
+    
+    func loadMore(urlValues: [Int]) {
+        for i in 0..<urlValues.count-180 {
+            HNManager.shared.fetchItem(id: urlValues[i]) { response, error in
+                guard let topStoryValues = response else  {return}
+                self.topStories.append(topStoryValues)
+                self.tableView.reloadData()
             }
         }
     }
+    
     
     func setupTableView() {
         tableView.isScrollEnabled = false
@@ -50,16 +56,16 @@ class HNBestTVC: UITableViewController {
     //MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch self.bestStories.count {
+        switch self.topStories.count {
         case 0:
             return 10
         default:
-            return bestStories.count
+            return topStories.count
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.bestStories.count <= 0 {
+        if self.topStories.count <= 0 {
             return 70
         } else {
             return UITableViewAutomaticDimension
@@ -71,7 +77,7 @@ class HNBestTVC: UITableViewController {
             else {
                 return UITableViewCell()
         }
-        if self.bestStories.count == 0 {
+        if self.topStories.count == 0 {
             cell.gradientLayers.forEach { gradientLayer in
                 let baseColor = cell.titlePlaceholderView.backgroundColor!
                 gradientLayer.colors = [baseColor.cgColor,
@@ -83,22 +89,15 @@ class HNBestTVC: UITableViewController {
             
             cell.textLabel?.font = UIFont.systemFont(ofSize: 10)
             cell.textLabel?.numberOfLines = 10
-            
-            //            cell.imagePlaceholderView.isHidden      = true
-            //            cell.titlePlaceholderView.isHidden      = true
-            //            cell.subtitlePlaceholderView.isHidden   = true
-            
+            cell.imagePlaceholderView.isHidden      = true
+            cell.titlePlaceholderView.isHidden      = true
+            cell.subtitlePlaceholderView.isHidden   = true
             
             tableView.isScrollEnabled = true
             tableView.separatorStyle = .singleLine
             
-            if self.bestStories[indexPath.row].title == nil {
-                
-            } else {
-                
-                cell.textLabel?.text = self.bestStories[indexPath.row].title
-                cell.detailTextLabel?.text = String(describing: self.bestStories[indexPath.row].time)
-                
+            if self.topStories[indexPath.row].title != nil {
+                cell.textLabel?.text = self.topStories[indexPath.row].title
             }
             
             return cell

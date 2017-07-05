@@ -103,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				897A7D231F0B5D6B00E6CF7D /* Info.plist */,
+				897A7D201F0B5D6B00E6CF7D /* LaunchScreen.storyboard */,
+				897A7D1E1F0B5D6B00E6CF7D /* Assets.xcassets */,
 				897A7D151F0B5D6B00E6CF7D /* AppDelegate.swift */,
 				892DC8BB1F0B78BD00BE5FC7 /* HNConstants.swift */,
 				892DC8BD1F0B78CB00BE5FC7 /* HNExtensions.swift */,
@@ -125,8 +127,6 @@
 		897A7D301F0B6E3200E6CF7D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				897A7D201F0B5D6B00E6CF7D /* LaunchScreen.storyboard */,
-				897A7D1E1F0B5D6B00E6CF7D /* Assets.xcassets */,
 				892DC8B71F0B76C600BE5FC7 /* HNStoriesTVC.swift */,
 				892DC8B91F0B775C00BE5FC7 /* HNStoriesTVC.xib */,
 			);
