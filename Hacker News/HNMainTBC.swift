@@ -79,18 +79,29 @@ class HNMainTBC: UITabBarController {
         newStoriesNC.navigationBar.isTranslucent        = false
         newStoriesNC.navigationBar.titleTextAttributes  = [NSForegroundColorAttributeName: UIColor.white]
         
+        let newTwitterFeedNC                        = UINavigationController(rootViewController: HNTwitterFeedTVC())
+        newTwitterFeedNC.tabBarItem.image           = UIImage(named: "twitter")
+        newTwitterFeedNC.tabBarItem.selectedImage   = UIImage(named: "selected-twitter")
+        newTwitterFeedNC.tabBarItem.imageInsets     = kEdgeInset
+        newTwitterFeedNC.tabBarItem.title           = kEmptyString
+        
+        newTwitterFeedNC.navigationBar.barStyle             = .black
+        newTwitterFeedNC.navigationBar.isTranslucent        = false
+        newTwitterFeedNC.navigationBar.titleTextAttributes  = [NSForegroundColorAttributeName: UIColor.white]
+        
         switch initialColor {
         case AppTheme.orange:
             topStoriesNC.navigationBar.barTintColor     = UIColor.orange
             bestStoriesNC.navigationBar.barTintColor    = UIColor.orange
             newStoriesNC.navigationBar.barTintColor    = UIColor.orange
-            
+            newTwitterFeedNC.navigationBar.barTintColor = UIColor.orange
         case AppTheme.black:
             topStoriesNC.navigationBar.barTintColor     = UIColor.black
             bestStoriesNC.navigationBar.barTintColor    = UIColor.black
             newStoriesNC.navigationBar.barTintColor    = UIColor.black
+            newTwitterFeedNC.navigationBar.barTintColor = UIColor.black
         }
         
-        return [topStoriesNC, bestStoriesNC, newStoriesNC]
+        return [topStoriesNC, bestStoriesNC, newStoriesNC, newTwitterFeedNC]
     }
 }

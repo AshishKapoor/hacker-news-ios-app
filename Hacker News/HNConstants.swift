@@ -34,6 +34,7 @@ enum StoryType {
 let kBestStory      = "Best Stories"
 let kTopStory       = "Top Stories"
 let kNewStory       = "New Stories"
+let kTwitterFeed    = "Twitter Feed"
 let kEmptyString    = ""
 
 enum AppTheme {

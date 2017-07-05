@@ -9,4 +9,7 @@ target 'Hacker News' do
   pod 'SwiftyJSON'
   pod 'Skeleton'
   pod 'HNClient'
+  pod 'Firebase/AdMob'
+  pod 'RFAboutView-Swift', '~> 2.0.1'
+  pod 'TwitterKit'
 end

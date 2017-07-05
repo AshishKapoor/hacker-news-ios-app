@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = HNMainTBC()
+        
+        Twitter.sharedInstance().start(withConsumerKey:"WIX2Yh6ZzUUItGS00kI3SDzxM", consumerSecret:"6Y9PyCBHNoiROlhcE91HpFT0rZxVaVbtXDpmumnXbGpLDUdwQ3")
         return true
     }
 

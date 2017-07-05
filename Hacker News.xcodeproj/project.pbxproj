@@ -20,6 +20,7 @@
 		897A7D2A1F0B62F700E6CF7D /* HNNewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D291F0B62F700E6CF7D /* HNNewTVC.swift */; };
 		897A7D2C1F0B6D3400E6CF7D /* HNMainTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D2B1F0B6D3400E6CF7D /* HNMainTBC.swift */; };
 		897A7D2E1F0B6E1A00E6CF7D /* HNStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D2D1F0B6E1A00E6CF7D /* HNStoryVC.swift */; };
+		89BB04131F0D6E5A00D04F46 /* HNTwitterFeedTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BB04121F0D6E5A00D04F46 /* HNTwitterFeedTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		897A7D291F0B62F700E6CF7D /* HNNewTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNNewTVC.swift; sourceTree = "<group>"; };
 		897A7D2B1F0B6D3400E6CF7D /* HNMainTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNMainTBC.swift; sourceTree = "<group>"; };
 		897A7D2D1F0B6E1A00E6CF7D /* HNStoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStoryVC.swift; sourceTree = "<group>"; };
+		89BB04121F0D6E5A00D04F46 /* HNTwitterFeedTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNTwitterFeedTVC.swift; sourceTree = "<group>"; };
 		969D79BF6E6D6BD1D5F6A8D0 /* Pods-Hacker News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News/Pods-Hacker News.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 		897A7D2F1F0B6E2200E6CF7D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				89BB04111F0D6E2A00D04F46 /* Twitter Feed */,
 				89AE3A831F0CE7A400EFCF16 /* TabBar */,
 				89110D761F0C2C4300339455 /* Stories List */,
 				89AE3A841F0CE7B400EFCF16 /* Stories */,
@@ -147,6 +150,14 @@
 				897A7D2D1F0B6E1A00E6CF7D /* HNStoryVC.swift */,
 			);
 			name = Stories;
+			sourceTree = "<group>";
+		};
+		89BB04111F0D6E2A00D04F46 /* Twitter Feed */ = {
+			isa = PBXGroup;
+			children = (
+				89BB04121F0D6E5A00D04F46 /* HNTwitterFeedTVC.swift */,
+			);
+			name = "Twitter Feed";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				897A7D2E1F0B6E1A00E6CF7D /* HNStoryVC.swift in Sources */,
+				89BB04131F0D6E5A00D04F46 /* HNTwitterFeedTVC.swift in Sources */,
 				892DC8B81F0B76C600BE5FC7 /* HNStoriesTVC.swift in Sources */,
 				897A7D2A1F0B62F700E6CF7D /* HNNewTVC.swift in Sources */,
 				892DC8BC1F0B78BD00BE5FC7 /* HNConstants.swift in Sources */,

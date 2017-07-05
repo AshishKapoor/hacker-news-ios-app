@@ -3,25 +3,59 @@ PODS:
   - AlamofireObjectMapper (4.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
+  - Firebase/AdMob (4.0.2):
+    - Firebase/Core
+    - Google-Mobile-Ads-SDK (= 7.20.0)
+  - Firebase/Core (4.0.2):
+    - FirebaseAnalytics (= 4.0.1)
+    - FirebaseCore (= 4.0.2)
+  - FirebaseAnalytics (4.0.1):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (4.0.2):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (2.0.0):
+    - FirebaseCore (~> 4.0)
+  - Google-Mobile-Ads-SDK (7.20.0)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - HNClient (0.1):
     - AlamofireObjectMapper (~> 4.1)
   - ObjectMapper (2.2.7)
+  - RFAboutView-Swift (2.0.1)
   - Skeleton (0.1.0)
   - SwiftyJSON (3.1.4)
+  - TwitterCore (3.0.0)
+  - TwitterKit (3.0.3):
+    - TwitterCore (>= 3.0.0)
 
 DEPENDENCIES:
+  - Firebase/AdMob
   - HNClient
+  - RFAboutView-Swift (~> 2.0.1)
   - Skeleton
   - SwiftyJSON
+  - TwitterKit
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
+  Firebase: c7ad0731eab26d18a3fc547dd048b0f7cd9c63ae
+  FirebaseAnalytics: 4d7040fefc3cd8b291cde35f12cf063d7963f15d
+  FirebaseCore: 1a8bf6c795ad07d2918278657954ffd2552e9c17
+  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  Google-Mobile-Ads-SDK: 168312cdc167fa22746d4ea8e839fc4825dd2966
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   HNClient: e2f7b077281f99828d7f6d3a05ad73427ab8dc31
   ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
+  RFAboutView-Swift: dc31db0e7bc890ab6c9e1ca8f50e8f97bdba9622
   Skeleton: b76249b7d6a73a9913e164c8030647a3e005c700
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  TwitterCore: 8ce250be1eb34633a0e6acc89520d4165ec52c10
+  TwitterKit: 202404be71aadd81d19f677b34579fe77d9cb67e
 
-PODFILE CHECKSUM: a6f42e66c9f100f5c2ff7ee211228824a5f0c1ce
+PODFILE CHECKSUM: dc40e8b389cd1f8982051ed225713aee56ca1e66
 
 COCOAPODS: 1.2.1
