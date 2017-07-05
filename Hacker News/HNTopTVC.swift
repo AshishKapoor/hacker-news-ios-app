@@ -29,7 +29,7 @@ class HNTopTVC: UITableViewController {
     }
     
     func fetchStories(_ completion: @escaping (_ error: Error?) -> ()) {
-        HNNetwork.sharedInstance.getStoriesIds(url: kurl) { stories, error in
+        HNNetworkServices.sharedInstance.getStoriesIds(url: kTopStories) { stories, error in
             DispatchQueue.main.async {
 //                self.stories.append(stories!)
                 if error == nil {
@@ -38,7 +38,7 @@ class HNTopTVC: UITableViewController {
             }
         }
         
-        HNNetwork.sharedInstance.getStoriesData(url: kTopStoriesUrl) { stories, error in
+        HNNetworkServices.sharedInstance.getStoriesData(url: "\(hnStoryBaseItemUrl)14693127\(hnPrettyJson)") { stories, error in
             DispatchQueue.main.async {
                 self.stories.append(stories!)
                 if error == nil {

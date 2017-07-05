@@ -9,27 +9,24 @@
 import Foundation
 import SwiftyJSON
 
-typealias StatsCompletionBlock = (_ stats: HNStories?, _ error: NSError?) -> ()
+typealias storiesDataCompletion = (_ stats: HNStories?, _ error: NSError?) -> ()
+typealias storiesIdCompletion = (_ stats: HNStoryId?, _ error: NSError?) -> ()
 
-typealias StatsCompletionBlock1 = (_ stats: HNStoryId?, _ error: NSError?) -> ()
-
-
-class HNNetwork {
+class HNNetworkServices {
     let session: URLSession
     init() {
         let configuration = URLSessionConfiguration.default
         session = URLSession(configuration: configuration)
     }
     
-    class var sharedInstance: HNNetwork {
+    class var sharedInstance: HNNetworkServices {
         struct Singleton {
-            static let instance = HNNetwork()
+            static let instance = HNNetworkServices()
         }
         return Singleton.instance
     }
-    
 
-    func getStoriesIds(url: String, _ completion: @escaping StatsCompletionBlock1) {
+    func getStoriesIds(url: String, _ completion: @escaping storiesIdCompletion) {
         guard let hnUrl = URL(string: url) else {return}
         let request = URLRequest(url: hnUrl)
         let task = session.dataTask(with: request) { data, response, dataError in
@@ -52,7 +49,7 @@ class HNNetwork {
     
     
     
-    func getStoriesData(url: String, _ completion: @escaping StatsCompletionBlock) {
+    func getStoriesData(url: String, _ completion: @escaping storiesDataCompletion) {
         guard let hnUrl = URL(string: url) else {return}
         let request = URLRequest(url: hnUrl)
         let task = session.dataTask(with: request) { data, response, dataError in

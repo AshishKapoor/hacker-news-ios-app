@@ -9,19 +9,19 @@
 import Foundation
 import SwiftyJSON
 
-open class HNStoryId : NSObject, NSCoding {
+class HNStoryId : NSObject, NSCoding {
     
-    open let storyId: Int
+    let storyId: Int
     
-    public init(fromJSON json: JSON) {
+    init(fromJSON json: JSON) {
         storyId = json.intValue
     }
     
-    public required init(coder aDecoder: NSCoder)  {
+    required public init(coder aDecoder: NSCoder)  {
         storyId = aDecoder.decodeObject() as! Int
     }
     
-    open func encode(with aCoder: NSCoder) {
+    public func encode(with aCoder: NSCoder) {
         aCoder.encode(storyId)
     }
 }

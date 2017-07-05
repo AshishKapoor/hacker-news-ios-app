@@ -9,12 +9,24 @@
 import Foundation
 import UIKit
 
-//typealias JSON              = Any
-//typealias JSONArray         = [JSON]
-//typealias JSONDictionary    = [String:Any]
+enum typeOfStories {
+    case topstories, beststories, newStories
+}
+
+let hnStoryBaseUrl = "https://hacker-news.firebaseio.com/v0/"
+let hnPrettyJson = ".json?print=pretty"
+
+let kTopStories = "\(hnStoryBaseUrl)\(typeOfStories.topstories)\(hnPrettyJson)"
+let kBestStories = "\(hnStoryBaseUrl)\(typeOfStories.beststories)\(hnPrettyJson)"
+let kNewStories = "\(hnStoryBaseUrl)\(typeOfStories.newStories)\(hnPrettyJson)"
+
+let hnStoryBaseItemUrl = "https://hacker-news.firebaseio.com/v0/item/" // "\($item)\($hnPrettyJson)"
+
+
 
 let kTopStoriesUrl = "https://hacker-news.firebaseio.com/v0/item/14693127.json?print=pretty"
 let kurl = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
+
 enum StoryType {
     case bestStories, topStory, newStory
 }
