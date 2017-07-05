@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8872CD998A3505DE3F99F1C1 /* Pods_Hacker_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC6517F6A5CBD5F2ED4F082 /* Pods_Hacker_News.framework */; };
-		89110D751F0C205700339455 /* HNNetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89110D741F0C205700339455 /* HNNetworkServices.swift */; };
 		892DC8B81F0B76C600BE5FC7 /* HNStoriesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DC8B71F0B76C600BE5FC7 /* HNStoriesTVC.swift */; };
 		892DC8BA1F0B775C00BE5FC7 /* HNStoriesTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892DC8B91F0B775C00BE5FC7 /* HNStoriesTVC.xib */; };
 		892DC8BC1F0B78BD00BE5FC7 /* HNConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DC8BB1F0B78BD00BE5FC7 /* HNConstants.swift */; };
@@ -21,14 +20,11 @@
 		897A7D2A1F0B62F700E6CF7D /* HNNewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D291F0B62F700E6CF7D /* HNNewTVC.swift */; };
 		897A7D2C1F0B6D3400E6CF7D /* HNMainTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D2B1F0B6D3400E6CF7D /* HNMainTBC.swift */; };
 		897A7D2E1F0B6E1A00E6CF7D /* HNStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D2D1F0B6E1A00E6CF7D /* HNStoryVC.swift */; };
-		897A7D331F0B730400E6CF7D /* HNStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D321F0B730400E6CF7D /* HNStories.swift */; };
-		89AE3A821F0CDD5D00EFCF16 /* HNStoryId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE3A811F0CDD5D00EFCF16 /* HNStoryId.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5CC6517F6A5CBD5F2ED4F082 /* Pods_Hacker_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hacker_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F6F434342E85F8F658F562 /* Pods-Hacker News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News/Pods-Hacker News.release.xcconfig"; sourceTree = "<group>"; };
-		89110D741F0C205700339455 /* HNNetworkServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNNetworkServices.swift; sourceTree = "<group>"; };
 		892DC8B71F0B76C600BE5FC7 /* HNStoriesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStoriesTVC.swift; sourceTree = "<group>"; };
 		892DC8B91F0B775C00BE5FC7 /* HNStoriesTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNStoriesTVC.xib; sourceTree = "<group>"; };
 		892DC8BB1F0B78BD00BE5FC7 /* HNConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNConstants.swift; sourceTree = "<group>"; };
@@ -43,8 +39,6 @@
 		897A7D291F0B62F700E6CF7D /* HNNewTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNNewTVC.swift; sourceTree = "<group>"; };
 		897A7D2B1F0B6D3400E6CF7D /* HNMainTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNMainTBC.swift; sourceTree = "<group>"; };
 		897A7D2D1F0B6E1A00E6CF7D /* HNStoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStoryVC.swift; sourceTree = "<group>"; };
-		897A7D321F0B730400E6CF7D /* HNStories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStories.swift; sourceTree = "<group>"; };
-		89AE3A811F0CDD5D00EFCF16 /* HNStoryId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStoryId.swift; sourceTree = "<group>"; };
 		969D79BF6E6D6BD1D5F6A8D0 /* Pods-Hacker News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News/Pods-Hacker News.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,14 +81,6 @@
 			name = "Stories List";
 			sourceTree = "<group>";
 		};
-		89110D791F0C34B300339455 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				89110D741F0C205700339455 /* HNNetworkServices.swift */,
-			);
-			name = Networking;
-			sourceTree = "<group>";
-		};
 		897A7D091F0B5D6B00E6CF7D = {
 			isa = PBXGroup;
 			children = (
@@ -120,8 +106,6 @@
 				897A7D151F0B5D6B00E6CF7D /* AppDelegate.swift */,
 				892DC8BB1F0B78BD00BE5FC7 /* HNConstants.swift */,
 				892DC8BD1F0B78CB00BE5FC7 /* HNExtensions.swift */,
-				89110D791F0C34B300339455 /* Networking */,
-				897A7D311F0B6E3A00E6CF7D /* Model */,
 				897A7D301F0B6E3200E6CF7D /* View */,
 				897A7D2F1F0B6E2200E6CF7D /* Controller */,
 			);
@@ -147,15 +131,6 @@
 				892DC8B91F0B775C00BE5FC7 /* HNStoriesTVC.xib */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		897A7D311F0B6E3A00E6CF7D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				897A7D321F0B730400E6CF7D /* HNStories.swift */,
-				89AE3A811F0CDD5D00EFCF16 /* HNStoryId.swift */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		89AE3A831F0CE7A400EFCF16 /* TabBar */ = {
@@ -304,13 +279,10 @@
 				897A7D2A1F0B62F700E6CF7D /* HNNewTVC.swift in Sources */,
 				892DC8BC1F0B78BD00BE5FC7 /* HNConstants.swift in Sources */,
 				897A7D1A1F0B5D6B00E6CF7D /* HNTopTVC.swift in Sources */,
-				897A7D331F0B730400E6CF7D /* HNStories.swift in Sources */,
-				89AE3A821F0CDD5D00EFCF16 /* HNStoryId.swift in Sources */,
 				897A7D161F0B5D6B00E6CF7D /* AppDelegate.swift in Sources */,
 				897A7D2C1F0B6D3400E6CF7D /* HNMainTBC.swift in Sources */,
 				897A7D181F0B5D6B00E6CF7D /* HNBestTVC.swift in Sources */,
 				892DC8BE1F0B78CB00BE5FC7 /* HNExtensions.swift in Sources */,
-				89110D751F0C205700339455 /* HNNetworkServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

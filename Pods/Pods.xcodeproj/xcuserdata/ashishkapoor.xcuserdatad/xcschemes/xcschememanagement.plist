@@ -4,6 +4,26 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>AlamofireObjectMapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>HNClient.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ObjectMapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Hacker News.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0A04F1AE2A746488BB9F5C436E2A1F0A</key>
+		<key>2F5622F3B18DF497981AB58C6D1FC72F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6187F5B8E0DC2DF7E547E8D3CF30EA84</key>
+		<key>31617D1D819A8D9C65BA00390E6752A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA29582A159B8870FFF1B68CC672A08D</key>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9502FB01641FBABB78522037E882757B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9FBB73505C33D15E5C15A4476599E02F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D90C57393069D9DE0C9053BEBDB716D6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F831EC625994EBC67CC693A26F277D7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

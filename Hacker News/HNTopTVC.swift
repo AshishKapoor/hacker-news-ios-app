@@ -8,41 +8,33 @@
 
 import UIKit
 import Skeleton
+import HNClient
 
 class HNTopTVC: UITableViewController {
-    fileprivate static let kRowHeight: CGFloat = 70
-    var stories = [HNStories]()
+    private var topStories = [HNItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = kTopStory        
         setupTableView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        fetchStories { error in
-            if error == nil {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
-    func fetchStories(_ completion: @escaping (_ error: Error?) -> ()) {
-        HNNetworkServices.sharedInstance.getStoriesIds(url: kTopStories) { stories, error in
-            DispatchQueue.main.async {
-//                self.stories.append(stories!)
-                if error == nil {
-                    completion(error)
-                }
-            }
+        
+        if topStories.count > 0 {
+            topStories.removeAll()
+            tableView.reloadData()
         }
         
-        HNNetworkServices.sharedInstance.getStoriesData(url: "\(hnStoryBaseItemUrl)14693127\(hnPrettyJson)") { stories, error in
-            DispatchQueue.main.async {
-                self.stories.append(stories!)
-                if error == nil {
-                    completion(error)
+        
+        HNManager.shared.fetchNewStoriesIds { ids in
+            for i in 450..<(ids.0.count) {
+                HNManager.shared.fetchItem(id: i) { item, error in
+                    guard let items = item else {return}
+                    self.topStories.append(items)
+                    self.tableView.reloadData()
                 }
             }
         }
@@ -51,6 +43,7 @@ class HNTopTVC: UITableViewController {
     func setupTableView() {
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         let nib = UINib(nibName: String(describing: HNStoriesTVC.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: HNStoriesTVC.self))
@@ -59,16 +52,20 @@ class HNTopTVC: UITableViewController {
     //MARK: - UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch self.stories.count {
+        switch self.topStories.count {
         case 0:
-            return Int(view.bounds.height/HNTopTVC.kRowHeight) + 1
+            return 10
         default:
-            return stories.count
+            return topStories.count
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return HNTopTVC.kRowHeight
+        if self.topStories.count <= 0 {
+            return 70
+        } else {
+            return UITableViewAutomaticDimension
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,8 +73,7 @@ class HNTopTVC: UITableViewController {
             else {
                 return UITableViewCell()
             }
-        
-        if self.stories.count == 0 {
+        if self.topStories.count == 0 {
             cell.gradientLayers.forEach { gradientLayer in
                 let baseColor = cell.titlePlaceholderView.backgroundColor!
                 gradientLayer.colors = [baseColor.cgColor,
@@ -86,13 +82,27 @@ class HNTopTVC: UITableViewController {
             }
             return cell
         } else {
-            cell.imagePlaceholderView.isHidden      = true
-            cell.titlePlaceholderView.isHidden      = true
-            cell.subtitlePlaceholderView.isHidden   = true
+            
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 10)
+            cell.textLabel?.numberOfLines = 10
+            
+//            cell.imagePlaceholderView.isHidden      = true
+//            cell.titlePlaceholderView.isHidden      = true
+//            cell.subtitlePlaceholderView.isHidden   = true
+            
+            
             tableView.isScrollEnabled = true
             tableView.separatorStyle = .singleLine
 
-            cell.textLabel?.text = stories[indexPath.row].title
+            if self.topStories[indexPath.row].title == nil {
+                
+            } else {
+
+                cell.textLabel?.text = self.topStories[indexPath.row].title
+                cell.detailTextLabel?.text = String(describing: self.topStories[indexPath.row].time)
+                
+            }
+            
             return cell
         }
     }

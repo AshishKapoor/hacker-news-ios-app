@@ -8,4 +8,5 @@ target 'Hacker News' do
   # Pods for Hacker News
   pod 'SwiftyJSON'
   pod 'Skeleton'
+  pod 'HNClient'
 end
