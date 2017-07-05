@@ -9,7 +9,8 @@
 import UIKit
 
 class HNMainTBC: UITabBarController {
-    let initialColor: AppTheme                  = AppTheme.black // TODO: - Hardcoded
+    
+    let initialColor: AppTheme                  = AppTheme.orange // TODO: - Hardcoded
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,18 @@ class HNMainTBC: UITabBarController {
         newStoriesNC.navigationBar.barStyle             = .black
         newStoriesNC.navigationBar.isTranslucent        = false
         newStoriesNC.navigationBar.titleTextAttributes  = [NSForegroundColorAttributeName: UIColor.white]
+        
+        switch initialColor {
+        case AppTheme.orange:
+            topStoriesNC.navigationBar.barTintColor     = UIColor.orange
+            bestStoriesNC.navigationBar.barTintColor    = UIColor.orange
+            newStoriesNC.navigationBar.barTintColor    = UIColor.orange
+            
+        case AppTheme.black:
+            topStoriesNC.navigationBar.barTintColor     = UIColor.black
+            bestStoriesNC.navigationBar.barTintColor    = UIColor.black
+            newStoriesNC.navigationBar.barTintColor    = UIColor.black
+        }
         
         return [topStoriesNC, bestStoriesNC, newStoriesNC]
     }
