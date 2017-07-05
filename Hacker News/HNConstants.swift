@@ -22,7 +22,7 @@ let kNewStories = "\(hnStoryBaseUrl)\(typeOfStories.newStories)\(hnPrettyJson)"
 
 let hnStoryBaseItemUrl = "https://hacker-news.firebaseio.com/v0/item/" // "\($item)\($hnPrettyJson)"
 
-
+let kAppFontSize: CGFloat = 13
 
 let kTopStoriesUrl = "https://hacker-news.firebaseio.com/v0/item/14693127.json?print=pretty"
 let kurl = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"

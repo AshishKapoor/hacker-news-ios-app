@@ -89,7 +89,7 @@ class HNTopTVC: UITableViewController {
             return cell
         } else {
             
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 10)
+            cell.textLabel?.font = UIFont.systemFont(ofSize: kAppFontSize)
             cell.textLabel?.numberOfLines = 10
             cell.imagePlaceholderView.isHidden      = true
             cell.titlePlaceholderView.isHidden      = true
