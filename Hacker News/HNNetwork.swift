@@ -7,24 +7,67 @@
 //
 
 import Foundation
+import SwiftyJSON
+
+typealias StatsCompletionBlock = (_ stats: HNStories?, _ error: NSError?) -> ()
+
+typealias StatsCompletionBlock1 = (_ stats: HNStoryId?, _ error: NSError?) -> ()
+
 
 class HNNetwork {
-    public enum HTTPMethod: String {
-        case GET    = "GET"
-        case POST   = "POST"
-        case PUT    = "PUT"
-        case DELETE = "DELETE"
+    let session: URLSession
+    init() {
+        let configuration = URLSessionConfiguration.default
+        session = URLSession(configuration: configuration)
     }
     
-    func loadData(url: String) {
+    class var sharedInstance: HNNetwork {
+        struct Singleton {
+            static let instance = HNNetwork()
+        }
+        return Singleton.instance
+    }
+    
+
+    func getStoriesIds(url: String, _ completion: @escaping StatsCompletionBlock1) {
         guard let hnUrl = URL(string: url) else {return}
-        let task = URLSession.shared.dataTask(with: hnUrl, completionHandler: { (data, response, error) -> Void in
-            do{
-                let option = JSONSerialization.ReadingOptions.allowFragments
-                guard let str = try JSONSerialization.jsonObject(with: data!, options: option) as? JSONDictionary else {return}
-                //            print(str)
-            } catch {fatalError("json error: \(error)")}
-        })
+        let request = URLRequest(url: hnUrl)
+        let task = session.dataTask(with: request) { data, response, dataError in
+            if dataError == nil {
+                do {
+                    let statsDictionary = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                    print(statsDictionary)
+                    let storyIds: HNStoryId = HNStoryId(fromJSON: JSON(dictionary: statsDictionary))
+                    completion(storyIds, nil)
+                } catch {
+                    completion(nil, error as NSError)
+                }
+            } else {
+                completion(nil, dataError as NSError?)
+            }
+        }
+        task.resume()
+    }
+    
+    
+    
+    
+    func getStoriesData(url: String, _ completion: @escaping StatsCompletionBlock) {
+        guard let hnUrl = URL(string: url) else {return}
+        let request = URLRequest(url: hnUrl)
+        let task = session.dataTask(with: request) { data, response, dataError in
+            if dataError == nil {
+                do {
+                    let statsDictionary = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                    let stats: HNStories = HNStories(fromJSON: JSON(dictionary: statsDictionary))
+                    completion(stats, nil)
+                } catch {
+                    completion(nil, error as NSError)
+                }
+            } else {
+                completion(nil, dataError as NSError?)
+            }
+        }
         task.resume()
     }
 }

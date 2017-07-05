@@ -22,6 +22,7 @@
 		897A7D2C1F0B6D3400E6CF7D /* HNMainTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D2B1F0B6D3400E6CF7D /* HNMainTBC.swift */; };
 		897A7D2E1F0B6E1A00E6CF7D /* HNStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D2D1F0B6E1A00E6CF7D /* HNStoryVC.swift */; };
 		897A7D331F0B730400E6CF7D /* HNStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D321F0B730400E6CF7D /* HNStories.swift */; };
+		89AE3A821F0CDD5D00EFCF16 /* HNStoryId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89AE3A811F0CDD5D00EFCF16 /* HNStoryId.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		897A7D2B1F0B6D3400E6CF7D /* HNMainTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNMainTBC.swift; sourceTree = "<group>"; };
 		897A7D2D1F0B6E1A00E6CF7D /* HNStoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStoryVC.swift; sourceTree = "<group>"; };
 		897A7D321F0B730400E6CF7D /* HNStories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStories.swift; sourceTree = "<group>"; };
+		89AE3A811F0CDD5D00EFCF16 /* HNStoryId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStoryId.swift; sourceTree = "<group>"; };
 		969D79BF6E6D6BD1D5F6A8D0 /* Pods-Hacker News.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hacker News.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hacker News/Pods-Hacker News.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				897A7D321F0B730400E6CF7D /* HNStories.swift */,
+				89AE3A811F0CDD5D00EFCF16 /* HNStoryId.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				892DC8BC1F0B78BD00BE5FC7 /* HNConstants.swift in Sources */,
 				897A7D1A1F0B5D6B00E6CF7D /* HNTopTVC.swift in Sources */,
 				897A7D331F0B730400E6CF7D /* HNStories.swift in Sources */,
+				89AE3A821F0CDD5D00EFCF16 /* HNStoryId.swift in Sources */,
 				897A7D161F0B5D6B00E6CF7D /* AppDelegate.swift in Sources */,
 				897A7D2C1F0B6D3400E6CF7D /* HNMainTBC.swift in Sources */,
 				897A7D181F0B5D6B00E6CF7D /* HNBestTVC.swift in Sources */,
