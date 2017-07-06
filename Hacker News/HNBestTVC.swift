@@ -56,6 +56,7 @@ class HNBestTVC: UITableViewController {
     func setupTableView() {
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
         
         let nib = UINib(nibName: String(describing: HNStoriesTVC.self), bundle: nil)
@@ -107,7 +108,7 @@ class HNBestTVC: UITableViewController {
             cell.storySubTitle?.numberOfLines = 1
             
             tableView.isScrollEnabled = true
-            tableView.separatorStyle  = .none
+            tableView.separatorStyle  = .singleLine
             
             cell.gradientLayers.forEach { gradientLayer in
                 gradientLayer.colors = [0,0,0]
@@ -120,7 +121,7 @@ class HNBestTVC: UITableViewController {
             if self.bestStories[indexPath.row].title != nil {
                 let data = self.bestStories[indexPath.row]
                 cell.storyTitle?.text = data.title
-                cell.storySubTitle?.text = "By \(String(describing: data.author!)): \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
+                cell.storySubTitle?.text = "\(String(describing: data.author!)): \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
                 cell.scoreTitle.text = "⇧\n\(String(describing: data.score!))"
             }
         }
