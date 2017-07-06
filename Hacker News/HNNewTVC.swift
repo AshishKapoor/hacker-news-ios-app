@@ -23,22 +23,32 @@ class HNNewTVC: UITableViewController {
         pageNumber = kInitialValue
         self.navigationController?.navigationBar.topItem?.title = kNewStory
         setupTableView()
+        loadStories()
+        setupPullToRefresh()
+    }
+   
+    func startRefreshing() {
+        tableView.startRefreshing(at: .top)
+    }
+
+    deinit {
+        tableView.removePullToRefresh(refresher)
+    }
+    
+    func loadStories() {
+        startRefreshing()
         HNManager.shared.fetchNewStoriesIds { [weak self] ids, error in
             self?.storiesCount = ids
             self?.loadStoriesData(page: kInitialValue)
+            self?.tableView.startRefreshing(at: .top)
         }
-        setupPullToRefresh()
-    }
-    
-    deinit {
-        tableView.removePullToRefresh(refresher)
     }
     
     func loadStoriesData(page: Int) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let upperValue = page * 20
         let lowerValue = upperValue - 20
-        for iteration in lowerValue...upperValue {
+        for iteration in lowerValue..<upperValue {
             dispatchGroup.enter()
             HNManager.shared.fetchItem(id: storiesCount[iteration]) { [weak self] response, error in
                 guard let topStoryValues = response else  {return}
@@ -145,12 +155,13 @@ class HNNewTVC: UITableViewController {
 private extension HNNewTVC {
     
     func setupPullToRefresh() {
-        //        tableView.addPullToRefresh(PullToRefresh()) { [weak self] in
-        //            let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        //            DispatchQueue.main.asyncAfter(deadline: delayTime) {
-        //                self?.tableView.endRefreshing(at: .top)
-        //            }
-        //        }
+        
+        tableView.addPullToRefresh(PullToRefresh()) { [weak self] in
+            let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                self?.tableView.endRefreshing(at: .top)
+            }
+        }
         
         tableView.addPullToRefresh(PullToRefresh(position: .bottom)) { [weak self] in
             let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
@@ -158,5 +169,7 @@ private extension HNNewTVC {
                 self?.reloadTable()
             }
         }
+        
     }
+    
 }

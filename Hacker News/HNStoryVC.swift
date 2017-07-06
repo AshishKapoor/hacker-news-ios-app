@@ -13,6 +13,7 @@ class HNStoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Story" // TODO: - Temp
+        view.backgroundColor = UIColor.white
     }
     
 }

@@ -38,7 +38,7 @@ class HNBestTVC: UITableViewController {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let upperValue = page * 20
         let lowerValue = upperValue - 20
-        for iteration in lowerValue...upperValue {
+        for iteration in lowerValue..<upperValue {
             dispatchGroup.enter()
             HNManager.shared.fetchItem(id: storiesCount[iteration]) { [weak self] response, error in
                 guard let topStoryValues = response else  {return}
