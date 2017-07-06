@@ -36,7 +36,7 @@ class HNTopTVC: UITableViewController {
     }
     
     func loadMore(urlValues: [Int]) {
-        for i in 0..<urlValues.count-180 {
+        for i in 0..<urlValues.count-450 {
             HNManager.shared.fetchItem(id: urlValues[i]) { response, error in
                 guard let topStoryValues = response else  {return}
                     self.topStories.append(topStoryValues)
