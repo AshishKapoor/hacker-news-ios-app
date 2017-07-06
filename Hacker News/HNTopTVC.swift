@@ -11,12 +11,9 @@ import Skeleton
 import HNClient
 
 class HNTopTVC: UITableViewController {
-    
     let dispatchGroup = DispatchGroup()
-
     var storiesCount: [Int] = [Int]()
     var pageNumber: Int = Int()
-    
     var topStories = [HNItem]()
     
     override func viewDidLoad() {
@@ -45,7 +42,7 @@ class HNTopTVC: UITableViewController {
         
         dispatchGroup.notify(queue: DispatchQueue.main, execute: {
             //all asynchronous tasks added to this DispatchGroup are completed. Proceed as required.
-            self.tableView.reloadData()
+            self.reloadTable()
         })
     }
     
@@ -118,6 +115,7 @@ class HNTopTVC: UITableViewController {
         DispatchQueue.global(qos: .default).async {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
     }
@@ -130,7 +128,6 @@ class HNTopTVC: UITableViewController {
             if indexPath.row == lastRowIndex - kInitialValue {
                 self.pageNumber = self.pageNumber + kInitialValue
                 loadStoriesData(page: self.pageNumber)
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
     }
