@@ -88,11 +88,11 @@ class HNNewTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.newStories.count <= 0 {
-            return 70
-        } else {
+//        if self.newStories.count <= 0 {
+//            return 120
+//        } else {
             return UITableViewAutomaticDimension
-        }
+//        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
