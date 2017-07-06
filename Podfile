@@ -12,4 +12,5 @@ target 'Hacker News' do
   pod 'Firebase/AdMob'
   pod 'RFAboutView-Swift', '~> 2.0.1'
   pod 'TwitterKit'
+  pod 'PullToRefresher', '~> 2.0'
 end

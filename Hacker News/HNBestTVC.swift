@@ -9,13 +9,15 @@
 import UIKit
 import Skeleton
 import HNClient
+import PullToRefresh
 
 class HNBestTVC: UITableViewController {
     let dispatchGroup = DispatchGroup()
     var storiesCount: [Int] = [Int]()
     var pageNumber: Int = Int()
     var bestStories = [HNItem]()
-    
+    let refresher = PullToRefresh()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         pageNumber = kInitialValue
@@ -25,6 +27,11 @@ class HNBestTVC: UITableViewController {
             self?.storiesCount = ids
             self?.loadStoriesData(page: kInitialValue)
         }
+        setupPullToRefresh()
+    }
+    
+    deinit {
+        tableView.removePullToRefresh(refresher)
     }
     
     func loadStoriesData(page: Int) {
@@ -116,6 +123,8 @@ class HNBestTVC: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.tableView.endRefreshing(at: .bottom)
+
             }
         }
     }
@@ -128,8 +137,27 @@ class HNBestTVC: UITableViewController {
             if indexPath.row == lastRowIndex - kInitialValue {
                 self.pageNumber = self.pageNumber + kInitialValue
                 loadStoriesData(page: self.pageNumber)
+                tableView.startRefreshing(at: .bottom)
             }
         }
     }
 }
 
+private extension HNBestTVC {
+    
+    func setupPullToRefresh() {
+        //        tableView.addPullToRefresh(PullToRefresh()) { [weak self] in
+        //            let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        //            DispatchQueue.main.asyncAfter(deadline: delayTime) {
+        //                self?.tableView.endRefreshing(at: .top)
+        //            }
+        //        }
+        
+        tableView.addPullToRefresh(PullToRefresh(position: .bottom)) { [weak self] in
+            let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                self?.reloadTable()
+            }
+        }
+    }
+}

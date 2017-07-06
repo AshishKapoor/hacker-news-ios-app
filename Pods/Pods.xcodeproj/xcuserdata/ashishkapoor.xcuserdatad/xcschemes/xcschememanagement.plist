@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PullToRefresher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>RFAboutView-Swift-RFAboutView_Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,7 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1107F5A4C326BCFA9BD4213006F53624</key>
+		<key>0C8A740DF684049F46AF1668A9CC9B9B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2E19C7B8C08C19B60C13AE0821654F5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +82,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6CD7D33A7754FB245099280658B65598</key>
+		<key>3C99DF7B60F33BF626DAD63E404E6015</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5B9D320AC7D994816A73FF2DF7FDA7A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,17 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C87EADAD7C6AE38E5F6296BD544B0BCA</key>
+		<key>98CC16EB2C16BDCB07F9CE4097E3424D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1BE409A28DCD1E76BBE4B44EE5EF551</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DD5605839F702D04110B7AB663E2B85E</key>
+		<key>D0BFFFE31A5D0E672EAEAE080D478DCA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
