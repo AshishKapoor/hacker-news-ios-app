@@ -14,6 +14,7 @@ enum typeOfStories {
     case topstories, beststories, newStories
 }
 
+
 let hnStoryBaseUrl = "https://hacker-news.firebaseio.com/v0/"
 let hnPrettyJson = ".json?print=pretty"
 
@@ -21,10 +22,10 @@ let kTopStories = "\(hnStoryBaseUrl)\(typeOfStories.topstories)\(hnPrettyJson)"
 let kBestStories = "\(hnStoryBaseUrl)\(typeOfStories.beststories)\(hnPrettyJson)"
 let kNewStories = "\(hnStoryBaseUrl)\(typeOfStories.newStories)\(hnPrettyJson)"
 
-let hnStoryBaseItemUrl = "https://hacker-news.firebaseio.com/v0/item/" // "\($item)\($hnPrettyJson)"
+let hnStoryBaseItemUrl = "https://hacker-news.firebaseio.com/v0/item/"
 
 let kInitialValue = 1
-let kAppFontSize: CGFloat = 15
+let kAppFontSize: CGFloat = 17
 
 let kTopStoriesUrl = "https://hacker-news.firebaseio.com/v0/item/14693127.json?print=pretty"
 let kurl = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty"
