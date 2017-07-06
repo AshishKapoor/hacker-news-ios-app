@@ -10,39 +10,41 @@ import UIKit
 import Skeleton
 import HNClient
 
-class HNBestTVC:  UITableViewController {
-    private var topStories = [HNItem]()
+class HNBestTVC: UITableViewController {
+    let dispatchGroup = DispatchGroup()
+    var storiesCount: [Int] = [Int]()
+    var pageNumber: Int = Int()
+    var bestStories = [HNItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pageNumber = kInitialValue
         self.navigationController?.navigationBar.topItem?.title = kBestStory
         setupTableView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        if topStories.count > 0 {
-            topStories.removeAll()
-            tableView.reloadData()
-        }
-        
-        
         HNManager.shared.fetchBestStoriesIds { [weak self] ids, error in
-            self?.loadMore(urlValues: ids)
+            self?.storiesCount = ids
+            self?.loadStoriesData(page: kInitialValue)
         }
     }
     
-    func loadMore(urlValues: [Int]) {
-        for i in 0..<urlValues.count-180 {
-            HNManager.shared.fetchItem(id: urlValues[i]) { response, error in
+    func loadStoriesData(page: Int) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        let upperValue = page * 20
+        let lowerValue = upperValue - 20
+        for iteration in lowerValue...upperValue {
+            dispatchGroup.enter()
+            HNManager.shared.fetchItem(id: storiesCount[iteration]) { [weak self] response, error in
                 guard let topStoryValues = response else  {return}
-                self.topStories.append(topStoryValues)
-                self.tableView.reloadData()
+                self?.bestStories.append(topStoryValues)
+                self?.dispatchGroup.leave()
             }
         }
+        
+        dispatchGroup.notify(queue: DispatchQueue.main, execute: {
+            //all asynchronous tasks added to this DispatchGroup are completed. Proceed as required.
+            self.reloadTable()
+        })
     }
-    
     
     func setupTableView() {
         tableView.isScrollEnabled = false
@@ -55,17 +57,21 @@ class HNBestTVC:  UITableViewController {
     
     //MARK: - UITableViewDataSource
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return kInitialValue
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch self.topStories.count {
+        switch self.bestStories.count {
         case 0:
-            return 10
+            return 20
         default:
-            return topStories.count
+            return bestStories.count
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.topStories.count <= 0 {
+        if self.bestStories.count <= 0 {
             return 70
         } else {
             return UITableViewAutomaticDimension
@@ -77,7 +83,7 @@ class HNBestTVC:  UITableViewController {
             else {
                 return UITableViewCell()
         }
-        if self.topStories.count == 0 {
+        if self.bestStories.count == 0 {
             cell.gradientLayers.forEach { gradientLayer in
                 let baseColor = cell.titlePlaceholderView.backgroundColor!
                 gradientLayer.colors = [baseColor.cgColor,
@@ -96,8 +102,8 @@ class HNBestTVC:  UITableViewController {
             tableView.isScrollEnabled = true
             tableView.separatorStyle = .singleLine
             
-            if self.topStories[indexPath.row].title != nil {
-                cell.textLabel?.text = self.topStories[indexPath.row].title
+            if self.bestStories[indexPath.row].title != nil {
+                cell.textLabel?.text = self.bestStories[indexPath.row].title
             }
             
             return cell
@@ -105,10 +111,25 @@ class HNBestTVC:  UITableViewController {
     }
     
     //MARK: - UITableViewDelegate
+    func reloadTable() {
+        DispatchQueue.global(qos: .default).async {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let skeletonCell = cell as! HNStoriesTVC
         skeletonCell.slide(to: .right)
+        if self.pageNumber < storiesCount.count/20 {
+            let lastRowIndex = tableView.numberOfRows(inSection: 0)
+            if indexPath.row == lastRowIndex - kInitialValue {
+                self.pageNumber = self.pageNumber + kInitialValue
+                loadStoriesData(page: self.pageNumber)
+            }
+        }
     }
 }
 
