@@ -19,6 +19,7 @@
 		89190FF71F0E848400A87E2F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89190FF61F0E848400A87E2F /* AVFoundation.framework */; };
 		89190FF91F0E849400A87E2F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89190FF81F0E849400A87E2F /* AdSupport.framework */; };
 		89190FFB1F0E849F00A87E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89190FFA1F0E849F00A87E2F /* AudioToolbox.framework */; };
+		891910051F0EC3A600A87E2F /* HackerStory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891910041F0EC3A600A87E2F /* HackerStory.storyboard */; };
 		892DC8B81F0B76C600BE5FC7 /* HNStoriesTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DC8B71F0B76C600BE5FC7 /* HNStoriesTVC.swift */; };
 		892DC8BA1F0B775C00BE5FC7 /* HNStoriesTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 892DC8B91F0B775C00BE5FC7 /* HNStoriesTVC.xib */; };
 		892DC8BC1F0B78BD00BE5FC7 /* HNConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DC8BB1F0B78BD00BE5FC7 /* HNConstants.swift */; };
@@ -49,6 +50,7 @@
 		89190FF61F0E848400A87E2F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		89190FF81F0E849400A87E2F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		89190FFA1F0E849F00A87E2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		891910041F0EC3A600A87E2F /* HackerStory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HackerStory.storyboard; sourceTree = "<group>"; };
 		892DC8B71F0B76C600BE5FC7 /* HNStoriesTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStoriesTVC.swift; sourceTree = "<group>"; };
 		892DC8B91F0B775C00BE5FC7 /* HNStoriesTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HNStoriesTVC.xib; sourceTree = "<group>"; };
 		892DC8BB1F0B78BD00BE5FC7 /* HNConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNConstants.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				897A7D231F0B5D6B00E6CF7D /* Info.plist */,
 				897C940B1F0E7C03002EA206 /* GoogleService-Info.plist */,
 				897A7D201F0B5D6B00E6CF7D /* LaunchScreen.storyboard */,
+				891910041F0EC3A600A87E2F /* HackerStory.storyboard */,
 				897A7D1E1F0B5D6B00E6CF7D /* Assets.xcassets */,
 				897A7D151F0B5D6B00E6CF7D /* AppDelegate.swift */,
 				892DC8BB1F0B78BD00BE5FC7 /* HNConstants.swift */,
@@ -274,6 +277,7 @@
 				897A7D221F0B5D6B00E6CF7D /* LaunchScreen.storyboard in Resources */,
 				897C940C1F0E7C03002EA206 /* GoogleService-Info.plist in Resources */,
 				897A7D1F1F0B5D6B00E6CF7D /* Assets.xcassets in Resources */,
+				891910051F0EC3A600A87E2F /* HackerStory.storyboard in Resources */,
 				892DC8BA1F0B775C00BE5FC7 /* HNStoriesTVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +471,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "tech.kapoor.Hacker-News";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -482,6 +487,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "tech.kapoor.Hacker-News";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

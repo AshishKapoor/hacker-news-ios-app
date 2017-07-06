@@ -20,6 +20,9 @@ class HNBestTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
         pageNumber = kInitialValue
         self.navigationController?.navigationBar.topItem?.title = kBestStory
         setupTableView()
@@ -121,11 +124,20 @@ class HNBestTVC: UITableViewController {
             if self.bestStories[indexPath.row].title != nil {
                 let data = self.bestStories[indexPath.row]
                 cell.storyTitle?.text = data.title
-                cell.storySubTitle?.text = "\(String(describing: data.author!)): \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
+                cell.storySubTitle?.text = "\(String(describing: data.type!).capitalized) by \(String(describing: data.author!)): \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
                 cell.scoreTitle.text = "⇧\n\(String(describing: data.score!))"
             }
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = self.bestStories[indexPath.row]
+        
+        let storyboard = UIStoryboard(name: "HackerStory", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier :"HNStoryVC") as? HNStoryVC
+        viewController?.storyUrl = data.url
+        self.navigationController?.pushViewController(viewController!, animated: true)
     }
     
     //MARK: - UITableViewDelegate

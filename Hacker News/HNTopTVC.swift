@@ -12,15 +12,18 @@ import HNClient
 import PullToRefresh
 
 class HNTopTVC: UITableViewController {
-//GADBannerViewDelegate {
+    
     let dispatchGroup = DispatchGroup()
     var storiesCount: [Int] = [Int]()
     var pageNumber: Int = Int()
     var topStories = [HNItem]()
     let refresher = PullToRefresh()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
         pageNumber = kInitialValue
         self.navigationController?.navigationBar.topItem?.title = kTopStory        
         setupTableView()
@@ -122,7 +125,7 @@ class HNTopTVC: UITableViewController {
             if self.topStories[indexPath.row].title != nil {
                 let data = self.topStories[indexPath.row]
                 cell.storyTitle?.text = data.title
-                cell.storySubTitle?.text = "\(String(describing: data.author!)): \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
+                cell.storySubTitle?.text = "\(String(describing: data.type!).capitalized) by \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
                 cell.scoreTitle.text = "⇧\n\(String(describing: data.score!))"
             }
         }
@@ -155,8 +158,13 @@ class HNTopTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        
+        let data = self.topStories[indexPath.row]
+
+        let storyboard = UIStoryboard(name: "HackerStory", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier :"HNStoryVC") as? HNStoryVC
+        print(data.url!)
+        viewController?.storyUrl = data.url!
+        self.navigationController?.pushViewController(viewController!, animated: true)
     }
 
 }

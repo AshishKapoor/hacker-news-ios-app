@@ -9,14 +9,21 @@
 import UIKit
 import GoogleMobileAds
 
-class HNStoryVC: UIViewController, GADBannerViewDelegate {
-
-    let googleAdBanner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+class HNStoryVC: UIViewController, GADBannerViewDelegate, UIWebViewDelegate {
+    
+    @IBOutlet weak var storyWV: UIWebView!
+    @IBOutlet weak var storyAIV: UIActivityIndicatorView!
+    @IBOutlet weak var googleAdBanner: GADBannerView!
+    
+    var storyUrl = URL(string: "https://www.google.com")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Story" // TODO: - Temp
-//        view.backgroundColor = UIColor.white
+        title = "Story"
+        setupAcitivityIndicatorView()
+        setupWebView()
         setupAdMob()
+        
     }
     
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
@@ -24,7 +31,7 @@ class HNStoryVC: UIViewController, GADBannerViewDelegate {
     }
     
     func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-        print("FAILED")
+        print("Failed to Load Ad.")
     }
     
     func setupAdMob() {
@@ -33,5 +40,34 @@ class HNStoryVC: UIViewController, GADBannerViewDelegate {
         googleAdBanner.delegate = self
         googleAdBanner.rootViewController = self
         googleAdBanner.load(GADRequest())
+    }
+    
+    func setupAcitivityIndicatorView () {
+        storyAIV.hidesWhenStopped = true
+    }
+    
+    func setupWebView () {
+        storyWV.delegate = self
+        storyWV.loadRequest(URLRequest(url: storyUrl!))
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        storyAIV.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        storyAIV.stopAnimating()
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        storyAIV.stopAnimating()
     }
 }
