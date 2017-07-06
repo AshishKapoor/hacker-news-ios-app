@@ -48,7 +48,8 @@ class HNStoryVC: UIViewController, GADBannerViewDelegate, UIWebViewDelegate {
     
     func setupWebView () {
         storyWV.delegate = self
-        storyWV.loadRequest(URLRequest(url: storyUrl!))
+        guard let safeUrl = storyUrl else {return}
+        storyWV.loadRequest(URLRequest(url: safeUrl))
     }
     
     override func didReceiveMemoryWarning() {

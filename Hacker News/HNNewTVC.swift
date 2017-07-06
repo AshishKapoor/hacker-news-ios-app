@@ -154,10 +154,10 @@ class HNNewTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = self.newStories[indexPath.row]
-        
         let storyboard = UIStoryboard(name: "HackerStory", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier :"HNStoryVC") as? HNStoryVC
-        viewController?.storyUrl = data.url
+        guard let safeUrl = data.url else {return}
+        viewController?.storyUrl = safeUrl
         self.navigationController?.pushViewController(viewController!, animated: true)
     }
     
