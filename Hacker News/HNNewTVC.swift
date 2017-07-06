@@ -109,22 +109,32 @@ class HNNewTVC: UITableViewController {
             }
             return cell
         } else {
+            cell.storyTitle?.font = UIFont.systemFont(ofSize: kAppFontSize)
+            cell.storyTitle?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.storyTitle?.numberOfLines = 0
             
-            cell.textLabel?.font = UIFont.systemFont(ofSize: kAppFontSize)
-            cell.textLabel?.numberOfLines = 10
-            cell.imagePlaceholderView.isHidden      = true
-            cell.titlePlaceholderView.isHidden      = true
-            cell.subtitlePlaceholderView.isHidden   = true
+            cell.storySubTitle?.font = UIFont.systemFont(ofSize: 12)
+            cell.storySubTitle?.numberOfLines = 1
             
             tableView.isScrollEnabled = true
-            tableView.separatorStyle = .singleLine
+            tableView.separatorStyle  = .none
             
-            if self.newStories[indexPath.row].title != nil {
-                cell.textLabel?.text = self.newStories[indexPath.row].title
+            cell.gradientLayers.forEach { gradientLayer in
+                gradientLayer.colors = [0,0,0]
             }
             
-            return cell
+            cell.imagePlaceholderView.backgroundColor       = UIColor.white
+            cell.titlePlaceholderView.backgroundColor       = UIColor.white
+            cell.subtitlePlaceholderView.backgroundColor    = UIColor.white
+            
+            if self.newStories[indexPath.row].title != nil {
+                let data = self.newStories[indexPath.row]
+                cell.storyTitle?.text = data.title
+                cell.storySubTitle?.text = "By \(String(describing: data.author!)): \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
+                cell.scoreTitle.text = "⇧\n\(String(describing: data.score!))"
+            }
         }
+        return cell
     }
     
     //MARK: - UITableViewDelegate

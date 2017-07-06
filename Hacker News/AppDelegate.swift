@@ -8,6 +8,7 @@
 
 import UIKit
 import TwitterKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = HNMainTBC()
         
         Twitter.sharedInstance().start(withConsumerKey:"WIX2Yh6ZzUUItGS00kI3SDzxM", consumerSecret:"6Y9PyCBHNoiROlhcE91HpFT0rZxVaVbtXDpmumnXbGpLDUdwQ3")
+        
+        // Use Firebase library to configure APIs.
+        FirebaseApp.configure()
+        
+        // Initialize the Google Mobile Ads SDK
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-1816315233369355~3316221621")
+
         return true
     }
 

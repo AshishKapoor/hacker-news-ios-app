@@ -12,6 +12,7 @@ import HNClient
 import PullToRefresh
 
 class HNTopTVC: UITableViewController {
+//GADBannerViewDelegate {
     let dispatchGroup = DispatchGroup()
     var storiesCount: [Int] = [Int]()
     var pageNumber: Int = Int()
@@ -56,6 +57,7 @@ class HNTopTVC: UITableViewController {
     func setupTableView() {
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 70
         tableView.rowHeight = UITableViewAutomaticDimension
         
         let nib = UINib(nibName: String(describing: HNStoriesTVC.self), bundle: nil)
@@ -78,43 +80,53 @@ class HNTopTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.topStories.count <= 0 {
-            return 70
-        } else {
+//        if self.topStories.count <= 0 {
+//            return 120
+//        } else {
             return UITableViewAutomaticDimension
-        }
+//        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HNStoriesTVC.self), for: indexPath) as? HNStoriesTVC
-            else {
-                return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HNStoriesTVC.self), for: indexPath) as? HNStoriesTVC else { return UITableViewCell() }
+
+        if self.topStories.count <= 0 {
+            if self.topStories.count == 0 {
+                cell.gradientLayers.forEach { gradientLayer in
+                    let baseColor = cell.titlePlaceholderView.backgroundColor!
+                    gradientLayer.colors = [baseColor.cgColor,
+                                            baseColor.brightened(by: 0.93).cgColor,
+                                            baseColor.cgColor]
+                }
+                return cell
             }
-        if self.topStories.count == 0 {
-            cell.gradientLayers.forEach { gradientLayer in
-                let baseColor = cell.titlePlaceholderView.backgroundColor!
-                gradientLayer.colors = [baseColor.cgColor,
-                                        baseColor.brightened(by: 0.93).cgColor,
-                                        baseColor.cgColor]
-            }
-            return cell
         } else {
+            cell.storyTitle?.font = UIFont.systemFont(ofSize: kAppFontSize)
+            cell.storyTitle?.lineBreakMode = NSLineBreakMode.byWordWrapping
+            cell.storyTitle?.numberOfLines = 0
             
-            cell.textLabel?.font = UIFont.systemFont(ofSize: kAppFontSize)
-            cell.textLabel?.numberOfLines = 10
-            cell.imagePlaceholderView.isHidden      = true
-            cell.titlePlaceholderView.isHidden      = true
-            cell.subtitlePlaceholderView.isHidden   = true
+            cell.storySubTitle?.font = UIFont.systemFont(ofSize: 12)
+            cell.storySubTitle?.numberOfLines = 1
             
             tableView.isScrollEnabled = true
-            tableView.separatorStyle = .singleLine
+            tableView.separatorStyle  = .none
             
-            if self.topStories[indexPath.row].title != nil {
-                cell.textLabel?.text = self.topStories[indexPath.row].title
+            cell.gradientLayers.forEach { gradientLayer in
+                gradientLayer.colors = [0,0,0]
             }
             
-            return cell
+            cell.imagePlaceholderView.backgroundColor       = UIColor.white
+            cell.titlePlaceholderView.backgroundColor       = UIColor.white
+            cell.subtitlePlaceholderView.backgroundColor    = UIColor.white
+            
+            if self.topStories[indexPath.row].title != nil {
+                let data = self.topStories[indexPath.row]
+                cell.storyTitle?.text = data.title
+                cell.storySubTitle?.text = "By \(String(describing: data.author!)): \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
+                cell.scoreTitle.text = "⇧\n\(String(describing: data.score!))"
+            }
         }
+        return cell
     }
     
     //MARK: - UITableViewDelegate
@@ -131,6 +143,7 @@ class HNTopTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let skeletonCell = cell as! HNStoriesTVC
         skeletonCell.slide(to: .right)
+        
         if self.pageNumber < storiesCount.count/20 {
             let lastRowIndex = tableView.numberOfRows(inSection: 0)
             if indexPath.row == lastRowIndex - kInitialValue {
@@ -140,19 +153,23 @@ class HNTopTVC: UITableViewController {
             }
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        
+    }
 }
 
 
 private extension HNTopTVC {
     
     func setupPullToRefresh() {
-//        tableView.addPullToRefresh(PullToRefresh()) { [weak self] in
-//            let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-//            DispatchQueue.main.asyncAfter(deadline: delayTime) {
-//                self?.tableView.endRefreshing(at: .top)
-//            }
-//        }
-        
+        tableView.addPullToRefresh(PullToRefresh()) { [weak self] in
+            let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                self?.tableView.endRefreshing(at: .top)
+            }
+        }
         tableView.addPullToRefresh(PullToRefresh(position: .bottom)) { [weak self] in
             let delayTime = DispatchTime.now() + Double(Int64(2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: delayTime) {

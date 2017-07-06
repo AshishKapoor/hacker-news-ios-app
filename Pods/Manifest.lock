@@ -34,6 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/AdMob
+  - Firebase/Core
   - HNClient
   - PullToRefresher (~> 2.0)
   - RFAboutView-Swift (~> 2.0.1)
@@ -59,6 +60,6 @@ SPEC CHECKSUMS:
   TwitterCore: 8ce250be1eb34633a0e6acc89520d4165ec52c10
   TwitterKit: 202404be71aadd81d19f677b34579fe77d9cb67e
 
-PODFILE CHECKSUM: 9b0f01a70592845dcc28fe7c90e8a0abb1b362b0
+PODFILE CHECKSUM: ebfdfc28ea2c4c3f0bcf5ae918bbc46f4907fca5
 
 COCOAPODS: 1.2.1

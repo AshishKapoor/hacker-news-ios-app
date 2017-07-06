@@ -10,7 +10,7 @@ import UIKit
 
 class HNMainTBC: UITabBarController {
     
-    let initialColor: AppTheme                  = AppTheme.black // TODO: - Hardcoded
+    let initialColor: AppTheme                  = AppTheme.orange // TODO: - Hardcoded
     
     override func viewDidLoad() {
         super.viewDidLoad()
