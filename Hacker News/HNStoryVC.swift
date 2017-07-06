@@ -35,7 +35,7 @@ class HNStoryVC: UIViewController, GADBannerViewDelegate, UIWebViewDelegate {
     }
     
     func setupAdMob() {
-        requestGAD.testDevices = [kGADSimulatorID]
+//        requestGAD.testDevices = [kGADSimulatorID]
         googleAdBanner.adUnitID = "ca-app-pub-1816315233369355/6269688021"
         googleAdBanner.delegate = self
         googleAdBanner.rootViewController = self
