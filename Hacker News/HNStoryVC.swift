@@ -45,7 +45,6 @@ class HNStoryVC: UIViewController, GADBannerViewDelegate, UIWebViewDelegate {
         aboutView.headerBackgroundColor = UIColor.orange
         
         // Add an acknowledgement:
-        
         aboutView.addAcknowledgement("SwiftyJSON", content: swiftyJSONCopyRight)
         aboutView.addAcknowledgement("HNClient", content: hnClientCopyRight)
         aboutView.addAcknowledgement("RFAboutView-Swift", content: rfAboutViewCopyright)
