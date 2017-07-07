@@ -134,7 +134,7 @@ class HNNewTVC: UITableViewController {
             if self.newStories[indexPath.row].title != nil {
                 let data = self.newStories[indexPath.row]
                 cell.storyTitle?.text = data.title
-                cell.storySubTitle?.text = "\(String(describing: data.type!).capitalized) by \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
+                cell.storySubTitle?.text = "\(String(describing: data.type!).capitalized) by \(String(describing: data.author!)): \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
                 cell.scoreTitle.text = "⇧\n\(String(describing: data.score!))"
             }
         }

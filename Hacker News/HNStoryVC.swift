@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMobileAds
+import RFAboutView_Swift
 
 class HNStoryVC: UIViewController, GADBannerViewDelegate, UIWebViewDelegate {
     
@@ -23,7 +24,39 @@ class HNStoryVC: UIViewController, GADBannerViewDelegate, UIWebViewDelegate {
         setupAcitivityIndicatorView()
         setupWebView()
         setupAdMob()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icons8-info"),
+                                       style: UIBarButtonItemStyle.plain ,
+                                       target: self, action: #selector(HNStoryVC.gotSettingPage(_:)))
+    }
+    
+    func gotSettingPage(_ sender: UIBarButtonItem){
+        UIApplication.shared.statusBarStyle = .default
         
+        let aboutNav = UINavigationController()
+        
+        // Initialise the RFAboutView:
+        let aboutView = RFAboutViewController(copyrightHolderName: "Ashish Kapoor", contactEmail: "swiftobjc@gmail.com", contactEmailTitle: "Contact me", websiteURL: NSURL(string: "https://ashishkapoor.github.io")! as URL, websiteURLTitle: "Developer's Website")
+        
+        // Set some additional options:
+        aboutView.headerBackgroundColor = .black
+        aboutView.headerTextColor = .white
+        aboutView.blurStyle = .dark
+        //        aboutView.headerBackgroundImage = UIImage(named: "blur.png")
+        aboutView.headerBackgroundColor = UIColor.orange
+        
+        // Add an acknowledgement:
+        
+        aboutView.addAcknowledgement("SwiftyJSON", content: swiftyJSONCopyRight)
+        aboutView.addAcknowledgement("HNClient", content: hnClientCopyRight)
+        aboutView.addAcknowledgement("RFAboutView-Swift", content: rfAboutViewCopyright)
+        aboutView.addAcknowledgement("TwitterKit", content: twitterCopyRight)
+        aboutView.addAcknowledgement("PullToRefresher", content: pullToRefreshCopyRight)
+        
+        // Add the aboutView to the NavigationController:
+        aboutNav.setViewControllers([aboutView], animated: false)
+        
+        // Present the navigation controller:
+        self.present(aboutNav, animated: true, completion: nil)
     }
     
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
@@ -71,4 +104,5 @@ class HNStoryVC: UIViewController, GADBannerViewDelegate, UIWebViewDelegate {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         storyAIV.stopAnimating()
     }
+    
 }
