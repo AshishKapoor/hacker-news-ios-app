@@ -131,6 +131,15 @@
 			name = "Stories List";
 			sourceTree = "<group>";
 		};
+		8914B9871F0F50D900876DBE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				892DC8BB1F0B78BD00BE5FC7 /* HNConstants.swift */,
+				892DC8BD1F0B78CB00BE5FC7 /* HNExtensions.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		897A7D091F0B5D6B00E6CF7D = {
 			isa = PBXGroup;
 			children = (
@@ -154,12 +163,8 @@
 			children = (
 				897A7D231F0B5D6B00E6CF7D /* Info.plist */,
 				897C940B1F0E7C03002EA206 /* GoogleService-Info.plist */,
-				897A7D201F0B5D6B00E6CF7D /* LaunchScreen.storyboard */,
-				891910041F0EC3A600A87E2F /* HackerStory.storyboard */,
-				897A7D1E1F0B5D6B00E6CF7D /* Assets.xcassets */,
 				897A7D151F0B5D6B00E6CF7D /* AppDelegate.swift */,
-				892DC8BB1F0B78BD00BE5FC7 /* HNConstants.swift */,
-				892DC8BD1F0B78CB00BE5FC7 /* HNExtensions.swift */,
+				8914B9871F0F50D900876DBE /* Helpers */,
 				897A7D301F0B6E3200E6CF7D /* View */,
 				897A7D2F1F0B6E2200E6CF7D /* Controller */,
 			);
@@ -180,6 +185,9 @@
 		897A7D301F0B6E3200E6CF7D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				897A7D201F0B5D6B00E6CF7D /* LaunchScreen.storyboard */,
+				891910041F0EC3A600A87E2F /* HackerStory.storyboard */,
+				897A7D1E1F0B5D6B00E6CF7D /* Assets.xcassets */,
 				892DC8B91F0B775C00BE5FC7 /* HNStoriesTVC.xib */,
 				892DC8B71F0B76C600BE5FC7 /* HNStoriesTVC.swift */,
 			);
