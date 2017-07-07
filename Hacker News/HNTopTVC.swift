@@ -83,11 +83,7 @@ class HNTopTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if self.topStories.count <= 0 {
-//            return 120
-//        } else {
-            return UITableViewAutomaticDimension
-//        }
+        return UITableViewAutomaticDimension
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
