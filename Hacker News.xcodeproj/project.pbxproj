@@ -26,7 +26,6 @@
 		892DC8BE1F0B78CB00BE5FC7 /* HNExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892DC8BD1F0B78CB00BE5FC7 /* HNExtensions.swift */; };
 		894355661F120E2100FC5E18 /* HNStoryDetailTVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894355651F120E2100FC5E18 /* HNStoryDetailTVCTableViewController.swift */; };
 		894355681F120F1D00FC5E18 /* HNStoryDetailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894355671F120F1D00FC5E18 /* HNStoryDetailTVCell.swift */; };
-		8943556A1F12204600FC5E18 /* HNJobsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894355691F12204600FC5E18 /* HNJobsTVC.swift */; };
 		897A7D161F0B5D6B00E6CF7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D151F0B5D6B00E6CF7D /* AppDelegate.swift */; };
 		897A7D181F0B5D6B00E6CF7D /* HNBestTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D171F0B5D6B00E6CF7D /* HNBestTVC.swift */; };
 		897A7D1A1F0B5D6B00E6CF7D /* HNTopTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A7D191F0B5D6B00E6CF7D /* HNTopTVC.swift */; };
@@ -59,7 +58,6 @@
 		892DC8BD1F0B78CB00BE5FC7 /* HNExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNExtensions.swift; sourceTree = "<group>"; };
 		894355651F120E2100FC5E18 /* HNStoryDetailTVCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStoryDetailTVCTableViewController.swift; sourceTree = "<group>"; };
 		894355671F120F1D00FC5E18 /* HNStoryDetailTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNStoryDetailTVCell.swift; sourceTree = "<group>"; };
-		894355691F12204600FC5E18 /* HNJobsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HNJobsTVC.swift; sourceTree = "<group>"; };
 		897A7D121F0B5D6B00E6CF7D /* Hacker News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hacker News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		897A7D151F0B5D6B00E6CF7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		897A7D171F0B5D6B00E6CF7D /* HNBestTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNBestTVC.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 				897A7D191F0B5D6B00E6CF7D /* HNTopTVC.swift */,
 				897A7D171F0B5D6B00E6CF7D /* HNBestTVC.swift */,
 				897A7D291F0B62F700E6CF7D /* HNNewTVC.swift */,
-				894355691F12204600FC5E18 /* HNJobsTVC.swift */,
 			);
 			name = "Stories List";
 			sourceTree = "<group>";
@@ -360,7 +357,6 @@
 				897A7D161F0B5D6B00E6CF7D /* AppDelegate.swift in Sources */,
 				897A7D2C1F0B6D3400E6CF7D /* HNMainTBC.swift in Sources */,
 				897A7D181F0B5D6B00E6CF7D /* HNBestTVC.swift in Sources */,
-				8943556A1F12204600FC5E18 /* HNJobsTVC.swift in Sources */,
 				894355661F120E2100FC5E18 /* HNStoryDetailTVCTableViewController.swift in Sources */,
 				892DC8BE1F0B78CB00BE5FC7 /* HNExtensions.swift in Sources */,
 			);

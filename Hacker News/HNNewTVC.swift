@@ -178,6 +178,7 @@ class HNNewTVC: UITableViewController {
         
         guard let safeId = data.id else {return}
         viewController.id = String(safeId)
+        viewController.id = "https://hacker-news.firebaseio.com/v0/item/\(safeId).json?print=pretty"
         
         self.navigationController?.pushViewController(viewController, animated: true)
     }

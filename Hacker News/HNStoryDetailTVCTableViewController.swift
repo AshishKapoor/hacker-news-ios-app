@@ -34,6 +34,7 @@ class HNStoryDetailTVC: UITableViewController, GADBannerViewDelegate {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icons8-info"),
                                                                  style: UIBarButtonItemStyle.plain ,
                                                                  target: self, action: #selector(HNStoryDetailTVC.gotSettingPage(_:)))
+        tableView.tableFooterView = UIView()
     }
 
     
