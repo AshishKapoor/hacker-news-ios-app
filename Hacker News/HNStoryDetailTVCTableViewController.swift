@@ -76,7 +76,7 @@ class HNStoryDetailTVC: UITableViewController, GADBannerViewDelegate {
     }
     
     func setupAdMob() {
-        requestGAD.testDevices = [kGADSimulatorID]
+//        requestGAD.testDevices = [kGADSimulatorID]
     }
     
     override func didReceiveMemoryWarning() {
