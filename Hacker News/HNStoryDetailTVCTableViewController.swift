@@ -99,21 +99,21 @@ class HNStoryDetailTVC: UITableViewController, GADBannerViewDelegate {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section{
         case 0:
-            return "Title"
+            return "\(type)'s title"
         case 1:
-            return "By"
+            return "\(type)'s by"
         case 2:
-            return "Time"
+            return "\(type)'s posted"
         case 3:
-            return "Score"
+            return "\(type)'s score"
         case 4:
-            return "Id"
+            return "\(type)'s ID"
         case 5:
-            return "Url"
+            return "\(type)'s url"
         case 6:
             return "Ads"
         default:
-            return "Other Devicesode"
+            return ""
         }
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

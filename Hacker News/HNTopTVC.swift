@@ -123,7 +123,6 @@ class HNTopTVC: UITableViewController {
                 cell.storyTitle?.text = data.title
                 cell.storySubTitle?.text = "\(String(describing: data.type!).capitalized) by \(String(describing: data.author!)): \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
                 cell.scoreTitle.text = "⇧\n\(String(describing: data.score!))"
-//                cell.urlTitle.text = data.url?.absoluteString
             }
         }
         return cell
