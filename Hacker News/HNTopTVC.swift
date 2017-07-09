@@ -123,6 +123,7 @@ class HNTopTVC: UITableViewController {
                 cell.storyTitle?.text = data.title
                 cell.storySubTitle?.text = "\(String(describing: data.type!).capitalized) by \(String(describing: data.author!)): \(String(describing: timeAgoSinceDate(date: data.time! as NSDate, numericDates: true)))"
                 cell.scoreTitle.text = "⇧\n\(String(describing: data.score!))"
+//                cell.urlTitle.text = data.url?.absoluteString
             }
         }
         return cell
@@ -156,10 +157,31 @@ class HNTopTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = self.topStories[indexPath.row]
         let storyboard = UIStoryboard(name: "HackerStory", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier :"HNStoryVC") as? HNStoryVC
+        
+        guard let viewController = storyboard.instantiateViewController(withIdentifier :"HNStoryDetailTVC") as? HNStoryDetailTVC else {return}
+        
+        guard let safeType = data.type else {return}
+        viewController.type = String(describing: safeType).capitalized
+        
+        guard let safeAuthor = data.author else {return}
+        viewController.by = "\(String(describing: safeType).capitalized) By \(safeAuthor)"
+
+        guard let safeTime = data.time as NSDate? else {return}
+        viewController.time = timeAgoSinceDate(date: safeTime, numericDates: true)
+
         guard let safeUrl = data.url else {return}
-        viewController?.storyUrl = safeUrl
-        self.navigationController?.pushViewController(viewController!, animated: true)
+        viewController.url = safeUrl.absoluteString
+        
+        guard let safeScore = data.score else {return}
+        viewController.score = safeScore
+        
+        guard let safeTitle = data.title else {return}
+        viewController.tit = safeTitle
+        
+        guard let safeId = data.id else {return}
+        viewController.id = "https://hacker-news.firebaseio.com/v0/item/\(safeId).json?print=pretty"
+    
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 
 }

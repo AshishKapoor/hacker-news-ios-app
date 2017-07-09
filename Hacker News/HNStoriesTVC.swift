@@ -13,7 +13,7 @@ class HNStoriesTVC: UITableViewCell {
     @IBOutlet weak var imagePlaceholderView: UIView!
     @IBOutlet weak var titlePlaceholderView: GradientContainerView!
     @IBOutlet weak var subtitlePlaceholderView: GradientContainerView!
-    
+    @IBOutlet weak var urlTitle: UILabel!
     @IBOutlet weak var storyTitle: UILabel!
     @IBOutlet weak var storySubTitle: UILabel!
     @IBOutlet weak var scoreTitle: UILabel!

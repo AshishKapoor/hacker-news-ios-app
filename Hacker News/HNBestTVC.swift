@@ -134,10 +134,31 @@ class HNBestTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = self.bestStories[indexPath.row]
         let storyboard = UIStoryboard(name: "HackerStory", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier :"HNStoryVC") as? HNStoryVC
+        
+        guard let viewController = storyboard.instantiateViewController(withIdentifier :"HNStoryDetailTVC") as? HNStoryDetailTVC else {return}
+        
+        guard let safeType = data.type else {return}
+        viewController.type = String(describing: safeType).capitalized
+        
+        guard let safeAuthor = data.author else {return}
+        viewController.by = "\(String(describing: safeType).capitalized) By \(safeAuthor)"
+        
+        guard let safeTime = data.time as NSDate? else {return}
+        viewController.time = timeAgoSinceDate(date: safeTime, numericDates: true)
+        
         guard let safeUrl = data.url else {return}
-        viewController?.storyUrl = safeUrl
-        self.navigationController?.pushViewController(viewController!, animated: true)
+        viewController.url = safeUrl.absoluteString
+        
+        guard let safeScore = data.score else {return}
+        viewController.score = safeScore
+        
+        guard let safeTitle = data.title else {return}
+        viewController.tit = safeTitle
+        
+        guard let safeId = data.id else {return}
+        viewController.id = String(safeId)
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     //MARK: - UITableViewDelegate

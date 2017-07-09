@@ -6,71 +6,52 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--StoryVC-->
-        <scene sceneID="cX9-8R-Pfg">
+        <!--Story DetailTVC-->
+        <scene sceneID="k7s-7Z-0vW">
             <objects>
-                <viewController storyboardIdentifier="HNStoryVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qDb-dr-Ldn" customClass="HNStoryVC" customModule="Hacker_News" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sHY-3q-W3y"/>
-                        <viewControllerLayoutGuide type="bottom" id="L9R-ND-m6B"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pJM-Dh-cgg">
+                <tableViewController storyboardIdentifier="HNStoryDetailTVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eEy-kg-QJc" customClass="HNStoryDetailTVC" customModule="Hacker_News" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" id="wLH-Fk-HvR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbc-xL-ar6">
-                                <rect key="frame" x="0.0" y="20" width="375" height="597"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="597" id="8z3-Vd-p3o"/>
-                                    <constraint firstAttribute="width" constant="375" id="PSQ-X4-W1N"/>
-                                    <constraint firstAttribute="width" secondItem="Bbc-xL-ar6" secondAttribute="height" multiplier="375:581" constant="-10.327022375215108" id="lhl-Ug-vKx"/>
-                                </constraints>
-                            </webView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W95-KO-lq6" customClass="GADBannerView">
-                                <rect key="frame" x="12" y="617" width="350" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="1pa-xZ-Wgz"/>
-                                    <constraint firstAttribute="width" secondItem="W95-KO-lq6" secondAttribute="height" multiplier="7:1" id="RWh-5E-ZJY"/>
-                                    <constraint firstAttribute="width" constant="350" id="mX8-Kf-8ue"/>
-                                </constraints>
-                            </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OaB-WP-EGL">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Bbc-xL-ar6" firstAttribute="leading" secondItem="pJM-Dh-cgg" secondAttribute="leading" id="7SW-0j-qbZ"/>
-                            <constraint firstItem="Bbc-xL-ar6" firstAttribute="top" secondItem="sHY-3q-W3y" secondAttribute="bottom" id="DmT-pE-di8"/>
-                            <constraint firstItem="OaB-WP-EGL" firstAttribute="leading" secondItem="W95-KO-lq6" secondAttribute="trailing" constant="-185" id="EKm-Uz-MCS"/>
-                            <constraint firstItem="OaB-WP-EGL" firstAttribute="centerY" secondItem="pJM-Dh-cgg" secondAttribute="centerY" id="Jwy-5w-z6W"/>
-                            <constraint firstItem="W95-KO-lq6" firstAttribute="top" secondItem="Bbc-xL-ar6" secondAttribute="bottom" id="Lah-be-9uO"/>
-                            <constraint firstItem="Bbc-xL-ar6" firstAttribute="leading" secondItem="pJM-Dh-cgg" secondAttribute="leading" id="TrV-ul-da5"/>
-                            <constraint firstItem="W95-KO-lq6" firstAttribute="leading" secondItem="pJM-Dh-cgg" secondAttribute="leadingMargin" constant="-4" id="fLx-le-n3e"/>
-                            <constraint firstItem="L9R-ND-m6B" firstAttribute="top" secondItem="W95-KO-lq6" secondAttribute="bottom" id="j8v-G3-iwB"/>
-                            <constraint firstItem="OaB-WP-EGL" firstAttribute="top" secondItem="Bbc-xL-ar6" secondAttribute="bottom" constant="-294" id="jBM-w8-nOw"/>
-                            <constraint firstItem="OaB-WP-EGL" firstAttribute="centerX" secondItem="W95-KO-lq6" secondAttribute="centerX" id="k2t-QC-rvc"/>
-                            <constraint firstItem="Bbc-xL-ar6" firstAttribute="centerX" secondItem="W95-KO-lq6" secondAttribute="centerX" id="pHH-SX-9yP"/>
-                            <constraint firstAttribute="trailing" secondItem="Bbc-xL-ar6" secondAttribute="trailing" id="vId-pB-QBh"/>
-                            <constraint firstAttribute="trailing" secondItem="Bbc-xL-ar6" secondAttribute="trailing" id="zOK-oJ-E0q"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="googleAdBanner" destination="W95-KO-lq6" id="EbI-Wh-y47"/>
-                        <outlet property="storyAIV" destination="OaB-WP-EGL" id="MKQ-5M-5ft"/>
-                        <outlet property="storyWV" destination="Bbc-xL-ar6" id="KaJ-DI-Vdg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2F6-NM-aif" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HNStoryDetailTVCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="48" id="1VS-NS-2Rw" customClass="HNStoryDetailTVCell" customModule="Hacker_News" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="48"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1VS-NS-2Rw" id="LSK-eF-VII">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvX-ch-ySM" customClass="GADBannerView">
+                                            <rect key="frame" x="12" y="-1" width="350" height="50"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="VvX-ch-ySM" firstAttribute="centerY" secondItem="LSK-eF-VII" secondAttribute="centerY" id="6s8-kv-8gF"/>
+                                        <constraint firstItem="VvX-ch-ySM" firstAttribute="leading" secondItem="LSK-eF-VII" secondAttribute="leadingMargin" constant="4" id="QrR-Q0-VKS"/>
+                                        <constraint firstItem="VvX-ch-ySM" firstAttribute="top" secondItem="LSK-eF-VII" secondAttribute="topMargin" constant="-9" id="VIU-Tp-3vn"/>
+                                        <constraint firstItem="VvX-ch-ySM" firstAttribute="centerX" secondItem="LSK-eF-VII" secondAttribute="centerX" id="nyX-8t-63U"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="googleBannerAd" destination="VvX-ch-ySM" id="seH-eJ-rPR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eEy-kg-QJc" id="Onm-Cn-5H8"/>
+                            <outlet property="delegate" destination="eEy-kg-QJc" id="kBX-FB-1bq"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ay-hm-5jj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="237.59999999999999" y="-287.40629685157421"/>
+            <point key="canvasLocation" x="-759.20000000000005" y="-287.40629685157421"/>
         </scene>
     </scenes>
 </document>
